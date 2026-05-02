@@ -8,5 +8,4 @@ langchain-tavily>=0.1.5
 pydantic>=2.6.4
 langchain-community>=0.0.20
 langchain-google-genai>=1.0.0
-faiss-cpu>=1.7.4
-sentence-transformers>=2.2.2
+rank_bm25
