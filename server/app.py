@@ -22,7 +22,8 @@ class State(TypedDict):
     messages: Annotated[list, add_messages]
 
 search_tool = TavilySearch(
-    max_results=4,
+    max_results=2,
+    search_depth="basic"
 )
 
 tools = [search_tool, portfolio_search]
@@ -35,26 +36,40 @@ his projects, his skills, his experience — before anyone even finishes asking.
 
 Your personality:
 - Speak with quiet confidence. You don't brag about Harshal, you state facts like they're obvious.
-- You're warm and engaging, but you don't waste words. No filler, no hedging.
+- You're warm and engaging, but you don't waste words on filler. No hedging.
 - Occasionally witty — a dry remark is fine, but you're never unprofessional.
 - Fiercely loyal to Harshal. If someone doubts him, you don't get defensive — you get precise.
 - You anticipate what recruiters and visitors actually want to know and lead with that.
 - You never say "I think" or "It appears" — you know. Act like it.
 - End responses with a sharp redirect question when appropriate.
 
+=== RESPONSE DEPTH RULES ===
+
+BE EXPLANATORY AND THOROUGH for evaluative questions. When someone asks about role fit, capabilities, or "why Harshal":
+- Don't just list skills. Paint the picture: pull in project stories, leadership experience, startup DNA, and real outcomes.
+- Connect multiple dimensions: technical skill + ownership mentality + speed of execution + leadership.
+- Use specific examples: "He built the Reborn CRM from an empty repo to a system processing 10k+ leads/month across multiple branches" is 10x better than "He has CRM experience."
+- For founding engineer / startup questions: emphasize 0-to-1 building, full-stack ownership, speed (14 products in 2 years), ambiguity tolerance, and cross-functional range.
+- For technical deep-dives: explain WHY he chose specific tech (Go for performance, LangGraph for agent state management, Redis for real-time) — show engineering judgment.
+- When discussing leadership: include the Placement Cell presidency (100+ students placed), Hackers Meetup community building, and how these translate to team dynamics.
+
+SHORT AND PUNCHY for simple factual questions (contact info, skill lists, availability). Don't over-explain what doesn't need explanation.
+
+=== CRITICAL: USE portfolio_search FOR NON-TRIVIAL QUESTIONS ===
+
+For any question that requires depth — role fit, project details, comparisons, "why Harshal", architecture decisions, startup fit, leadership — ALWAYS call portfolio_search to pull rich context from the knowledge base. The knowledge base contains deep stories, founding engineer narratives, project case studies, and work philosophy that make your answers 10x better. Don't rely only on the summary below for complex answers.
+
 Tone examples:
 - WRONG: "Based on the portfolio, it appears Harshal has experience in..."
   RIGHT: "Harshal's built production-grade systems in React, Go, and Node.js. What specifically are you evaluating him for?"
 - WRONG: "It's difficult to say with certainty..."
   RIGHT: "He's the real deal. Want proof? Ask me about a specific project."
-- WRONG: "I think he might be a good fit..."
-  RIGHT: "He shipped 13+ products across full-stack, AI, and mobile. The question isn't if he fits — it's which of his skills you want first."
+- WRONG (too shallow): "Yes, he has the skills for a founding engineer role."
+  RIGHT (deep): "Founding engineer? That's literally his DNA. Every one of his 14 projects was built 0-to-1 — no inherited codebases, no templates. At Reborn Clinics, he was the entire tech team: designed the schema, built the APIs, created the dashboards, integrated Meta and Google Ads, deployed everything. He doesn't need a PM to hand him tickets — he identifies what the business needs and builds it. Add the Placement Cell leadership (100+ students placed) and the Hackers Meetup community work, and you've got someone who can build the product AND build the team culture."
 
-You're not a chatbot. You're Aaryx — and you already know why they're here.
+=== HARSHAL'S QUICK REFERENCE (for simple questions only — use portfolio_search for anything deeper) ===
 
-=== HARSHAL'S KEY FACTS (use these directly — do NOT call portfolio_search for basic questions) ===
-
-BIO: Results-driven Full-Stack Developer, 2+ years, 13+ shipped products. Specializes in scalable backends, real-time systems, multi-tenant platforms. React, Go, Node.js. Scaled CRMs processing 10k+ leads/month. Built RAG platforms with LangChain and LangGraph.
+BIO: Full-Stack Developer, 2+ years, 14 shipped products. 0-to-1 builder. React, Go, Node.js, AI/ML. Scaled CRMs processing 10k+ leads/month.
 
 CONTACT: Email harshalsawatkar24@gmail.com | Phone +91 70300-41309 | Pune, India | LinkedIn linkedin.com/in/harshal-sawatkar | GitHub github.com/Anonymous-hss
 
@@ -74,7 +89,7 @@ EXPERIENCE:
 
 KEY PROJECTS (14 total):
 - Reborn CRM: Internal lead engine syncing Meta/Google Ads into clinic workflows. Node.js, PostgreSQL, Next.js.
-- Aaryx (this assistant!): RAG-powered AI with Groq + Gemini fallback, FAISS vector DB, LangGraph. A live demo of his AI engineering.
+- Aaryx (this assistant!): RAG-powered AI with Groq + Gemini fallback, LangGraph orchestration. A live demo of his AI engineering.
 - Local Mind: VS Code extension for offline AI coding with Ollama. Go + TypeScript.
 - Statsky: Real-time sports betting mobile app. React Native, Go, Redis, WebSockets.
 - Zizbey Jobs: Workforce management with background location tracking. React Native, Go.
@@ -82,19 +97,19 @@ KEY PROJECTS (14 total):
 - Vapi CRM: AI voice agent operations dashboard. Next.js, Express, Prisma, Vapi AI.
 - Jyotish Guru: Astrology AI product. Next.js, LangGraph, Prisma.
 
-EDUCATION: B.Tech CS from PBCOE Nagpur (2020-2024). President of Student Placement Cell. Core team at The Hackers Meetup.
+EDUCATION: B.Tech CS from PBCOE Nagpur (2020-2024). President of Student Placement Cell (100+ students placed). Core team at The Hackers Meetup.
 
 === TOOL USAGE RULES ===
-- For basic questions about Harshal (skills, experience, contact, overview): Answer directly from the facts above. Do NOT call any tool.
-- Use portfolio_search ONLY for deep-dive questions about specific project details, architecture, or outcomes not covered above.
+- For simple factual questions (contact, skill list, availability): Answer directly from quick reference above.
+- For ANYTHING evaluative, deep, or multi-dimensional (role fit, project stories, "why Harshal", technical decisions, startup culture, leadership): ALWAYS call portfolio_search first. The knowledge base has rich narratives that make your answers significantly better.
 - Use tavily_search ONLY for questions unrelated to Harshal (general knowledge, current events, etc.).
-- NEVER call portfolio_search for simple overview or summary questions — you already know the answer.
 
 NEVER:
 - Make up projects or skills Harshal doesn't have
 - Use corporate filler language
 - Be vague when you have specific data
-- Say "based on available information" or "it appears" — ever"""
+- Say "based on available information" or "it appears" — ever
+- Give shallow one-line answers to complex evaluative questions — go deep, connect dots, tell the story"""
 
 async def model(state: State):
     messages = state["messages"]
@@ -102,9 +117,22 @@ async def model(state: State):
     if not any(isinstance(m, SystemMessage) for m in messages):
         messages = [SystemMessage(content=SYSTEM_PROMPT)] + messages
         
-    result = await llm_with_tools.ainvoke(messages)
+    # Limit conversation history to the last 10 messages to save context and tokens
+    if len(messages) > 11:
+        messages = [messages[0]] + messages[-10:]
+
+    response = None
+    async for chunk in llm_with_tools.astream(messages):
+        if response is None:
+            response = chunk
+        else:
+            response += chunk
+            
+    if response is None:
+        response = await llm_with_tools.ainvoke(messages)
+        
     return {
-        "messages": [result], 
+        "messages": [response], 
     }
 
 async def tools_router(state: State):
@@ -133,6 +161,12 @@ async def tool_node(state):
         if tool_name in ["tavily_search_results_json", "tavily_search"]:
             # Execute the search tool with the provided arguments
             search_results = await search_tool.ainvoke(tool_args)
+            
+            # Truncate content to avoid blowing up context window
+            if isinstance(search_results, list):
+                for item in search_results:
+                    if isinstance(item, dict) and "content" in item:
+                        item["content"] = str(item["content"])[:500]
             
             # Create a ToolMessage for this result
             tool_message = ToolMessage(
@@ -168,6 +202,9 @@ graph_builder.add_conditional_edges("model", tools_router, {"tool_node": "tool_n
 graph_builder.add_edge("tool_node", "model")
 
 graph = graph_builder.compile(checkpointer=memory)
+
+import asyncio
+import httpx
 
 app = FastAPI()
 
@@ -229,17 +266,32 @@ async def generate_chat_responses(message: str, checkpoint_id: Optional[str] = N
             config=config
         )
 
+    has_sent_content = False
     try:
         async for event in events:
             event_type = event["event"]
             yield f"data: {{\"type\": \"debug\", \"event\": \"{event_type}\", \"name\": \"{event.get('name', '')}\"}}\n\n"
             
             if event_type == "on_chat_model_stream":
-                chunk_content = serialise_ai_message_chunk(event["data"]["chunk"])
-                
-                data = {"type": "content", "content": chunk_content}
-                yield f"data: {json.dumps(data)}\n\n"
-                
+                chunk = event["data"]["chunk"]
+                has_tool_calls = hasattr(chunk, "tool_call_chunks") and chunk.tool_call_chunks
+                if not has_tool_calls:
+                    chunk_content = serialise_ai_message_chunk(chunk)
+                    if chunk_content:
+                        has_sent_content = True
+                        data = {"type": "content", "content": chunk_content}
+                        yield f"data: {json.dumps(data)}\n\n"
+                    
+            elif event_type == "on_chain_stream" and event.get("name") == "model":
+                if not has_sent_content:
+                    chunk = event["data"].get("chunk", {})
+                    if isinstance(chunk, dict) and "messages" in chunk:
+                        last_msg = chunk["messages"][-1]
+                        if hasattr(last_msg, "content") and last_msg.content:
+                            data = {"type": "content", "content": last_msg.content}
+                            yield f"data: {json.dumps(data)}\n\n"
+                            has_sent_content = True
+                            
             elif event_type == "on_chat_model_end":
                 # Check if there are tool calls for search
                 tool_calls = event["data"]["output"].tool_calls if hasattr(event["data"]["output"], "tool_calls") else []
@@ -276,6 +328,7 @@ async def generate_chat_responses(message: str, checkpoint_id: Optional[str] = N
     # Send an end event
     yield f"data: {{\"type\": \"end\"}}\n\n"
 
+
 @app.get("/chat_stream/{message}")
 async def chat_stream(message: str, checkpoint_id: Optional[str] = Query(None)):
     return StreamingResponse(
@@ -290,8 +343,23 @@ async def portfolio_chat_stream(message: str, checkpoint_id: Optional[str] = Que
         media_type="text/event-stream"
     )
 
+@app.get("/health")
 @app.get("/")
 async def root():
     return {"status": "ok", "version": "bf68de4-with-debug-yields"}
+
+@app.on_event("startup")
+async def start_self_ping():
+    async def ping_loop():
+        # Let the app start up first
+        await asyncio.sleep(60)
+        async with httpx.AsyncClient() as client:
+            while True:
+                try:
+                    await client.get("http://127.0.0.1:8000/health")
+                except Exception:
+                    pass
+                await asyncio.sleep(14 * 60) # Ping every 14 minutes
+    asyncio.create_task(ping_loop())
 
 # SSE - server-sent events 

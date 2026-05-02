@@ -21,14 +21,14 @@ def get_retriever():
     docs = loader.load()
     
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50,
-        separators=["\n\n", "\n", " ", ""]
+        chunk_size=800,
+        chunk_overlap=100,
+        separators=["\n---\n", "\n\n", "\n", " ", ""]
     )
     splits = text_splitter.split_documents(docs)
     
     retriever = BM25Retriever.from_documents(splits)
-    retriever.k = 4
+    retriever.k = 6
     
     with open(BM25_INDEX_FILE, "wb") as f:
         pickle.dump(retriever, f)

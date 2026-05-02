@@ -13,7 +13,7 @@ def get_llm_with_fallback(tools=None):
     llm_primary = ChatGroq(model="llama-3.1-8b-instant")
     
     # Initialize Gemini (Fallback)
-    llm_fallback = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
+    llm_fallback = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
     
     if tools:
         llm_primary_with_tools = llm_primary.bind_tools(tools=tools)

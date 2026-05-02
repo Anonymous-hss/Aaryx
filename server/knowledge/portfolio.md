@@ -173,3 +173,184 @@ GitHub: https://github.com/Anonymous-hss/Aaryx
 3. Systems and Operations: Built systems that support real-time behavior, workforce coordination, and production workflows instead of one-off demo builds. (Live proof: Zizbey Jobs - https://play.google.com/store/apps/details?id=com.zizbey.zizbeyjobs&hl=en_IN)
 4. Leadership and Community: Led placement and community initiatives, organized events, and helped create opportunities outside day-to-day product delivery work. (Live proof: Event gallery - https://photos.app.goo.gl/p4334N94eRTqLEYAA)
 5. Performance and Conversion: Worked on storefronts and growth-facing products where load time, usability, and faster follow-up directly affect business outcomes. (Live proof: Arlyn live site - https://arlyn.us/)
+
+---
+
+## Founding Engineer & Startup DNA
+
+### Why Harshal is a Natural Founding Engineer
+Harshal isn't just a developer who writes code — he's a builder who thinks in systems, products, and outcomes. Every role he's had mirrors founding engineer responsibilities:
+
+**0 → 1 Builder:** Every single one of Harshal's 14 projects was built from scratch. No templates, no inherited codebases. The Reborn CRM started as an empty repo and became a production system processing 10,000+ leads/month across multiple clinic branches. Statsky went from concept to a live real-time betting app with WebSocket infrastructure. Aaryx (this assistant) went from idea to deployed AI product with RAG, streaming, and a polished UI — all solo.
+
+**Full Ownership Mentality:** At Reborn Clinics, Harshal didn't just write backend code — he owned the entire technical stack. He designed the database schema, built the APIs, created the frontend dashboards, integrated Meta and Google Ads APIs for lead syncing, set up real-time notifications, and deployed everything. No senior engineer handed him tasks — he identified what the business needed and built it. That's founding engineer behavior.
+
+**Thrives in Chaos & Ambiguity:** Early-stage startups don't have PRDs or detailed specs. Harshal's entire career has been about receiving vague requirements ("we need a CRM", "build us an AI assistant", "we need workforce tracking") and turning them into shipped products. He doesn't need hand-holding — he needs a problem.
+
+**Speed of Execution:** Harshal ships fast. 14 products in 2 years. That's roughly one shipped product every 6 weeks. Each one production-grade, not a weekend hackathon project. This velocity is exactly what early-stage startups need — someone who can prototype, validate, iterate, and ship in weeks, not quarters.
+
+**Cross-Functional Range:** A founding engineer can't be "just a frontend dev" or "just a backend dev." Harshal works across:
+- Mobile (React Native — Statsky, Zizbey Jobs)
+- Web Frontend (React, Next.js — every project)
+- Backend (Node.js, Go, Express, FastAPI)
+- Databases (PostgreSQL, MongoDB, Redis, MySQL)
+- AI/ML (LangChain, LangGraph, RAG, FAISS, Ollama)
+- DevOps (Docker, AWS, CI/CD)
+- Design (Figma, Tailwind, Framer Motion)
+This is the exact profile that founding engineers need: breadth + depth.
+
+**Product Thinking:** Harshal doesn't just build features — he builds products. Marriage Bio Data Maker has a monetization flow. Vapi CRM has authenticated dashboards and sentiment tracking. Local Mind is designed as a developer tool with real ergonomics. He thinks about users, conversion, and business outcomes — not just code.
+
+### Early-Stage Startup Alignment
+- Has worked at both early-stage companies (Zizbey, ARLYN) and directly with business founders (Reborn Clinics)
+- Built internal tools that directly moved business metrics (10k+ leads/month pipeline)
+- Comfortable being the only technical person in the room
+- Can talk to non-technical stakeholders and translate business needs into technical architecture
+- Self-directed — every project in his portfolio was self-initiated or built with minimal guidance
+- Ships to production, not to demo environments
+
+---
+
+## Leadership & People Skills
+
+### President, Student Placement Cell (PBCOE, 2022-2023)
+This wasn't a ceremonial title. Harshal led placement drives that secured internships and full-time roles for 100+ students. He coordinated with industry experts, managed a team of placement coordinators, and organized training sessions. This demonstrates:
+- Ability to lead teams and manage stakeholders
+- Communication skills with both technical and non-technical audiences
+- Event organization and logistics management
+- Mentorship — helping 100+ students find career paths
+
+### Core Team, The Hackers Meetup (2023-2024)
+As Documentation Team Lead for a cybersecurity community, Harshal:
+- Organized technical workshops, hackathons, and cybersecurity talks
+- Grew the Nagpur chapter community through social media and outreach
+- Promoted cybersecurity and ethical hacking awareness
+- Led meetups and community events in Nagpur
+
+### What This Means for Teams
+Harshal isn't a heads-down-only coder. He can:
+- Lead standups and drive technical discussions
+- Mentor junior developers
+- Present to stakeholders and explain technical decisions in business terms
+- Build team culture — he's done it at the placement cell and community level
+- Handle cross-functional coordination between design, product, and engineering
+
+---
+
+## Work Style & Engineering Philosophy
+
+### How Harshal Works
+- **Ownership-first:** Doesn't wait for tickets. Sees a problem, builds a solution.
+- **Ship fast, iterate faster:** Believes in getting v1 out quickly and refining based on real usage.
+- **Production-grade from day one:** Even v1s have proper error handling, auth, and monitoring. No "we'll add that later."
+- **Full-stack by default:** Can pick up any layer of the stack without needing ramp-up time.
+- **AI-native thinking:** Integrates AI capabilities into products naturally, not as a bolt-on feature.
+
+### Technical Decision-Making
+- Chooses Go for performance-critical backends (Statsky, Zizbey Jobs, PetStop)
+- Uses Node.js/Express for rapid API development and ecosystem breadth (Reborn CRM, Vapi CRM)
+- Picks Next.js for SEO-sensitive or SSR-needed frontends (Reborn Clinics, Jyotish Guru)
+- Uses React Native for cross-platform mobile when speed-to-market matters (Statsky, Zizbey Jobs)
+- Implements LangGraph for complex AI agent workflows requiring state management (Aaryx, Jyotish Guru)
+- Selects PostgreSQL for relational data integrity, Redis for caching and real-time (Statsky)
+
+### Code Quality Indicators
+- Writes typed code (TypeScript) where applicable
+- Uses proper auth (JWT in Vapi CRM)
+- Implements real-time systems properly (WebSockets in Statsky, not polling)
+- Designs multi-tenant architectures (Zizbey)
+- Builds with deployment in mind (Docker, CI/CD)
+- Published research paper on AR/VR learning systems
+
+---
+
+## Deep Project Stories
+
+### Reborn CRM — The 10k Leads/Month Story
+The problem: Reborn Skin & Hair Clinics was running multiple branches but had no centralized system for lead management. Leads from Meta Ads and Google Ads were being tracked manually in spreadsheets. Follow-ups were missed. Revenue was leaking.
+
+What Harshal built: A complete CRM from scratch that:
+- Automatically syncs leads from Meta Ads API and Google Ads API in near real-time
+- Routes leads to the correct branch based on location and service type
+- Provides multi-branch dashboards so managers see their own pipeline
+- Sends real-time notifications when new leads arrive
+- Tracks follow-up status and patient conversion funnels
+- Handles 10,000+ leads per month without performance degradation
+
+Why it matters: This wasn't a tutorial project. This was a real business system handling real money. When leads aren't followed up within minutes, clinics lose patients. Harshal's system made that response time near-instant.
+
+### Aaryx — Building His Own AI Assistant
+Harshal didn't just build a chatbot — he built an AI assistant that demonstrates his entire engineering philosophy:
+- **LangGraph orchestration:** Not a simple prompt-response loop. Aaryx uses a state machine with conditional tool routing, model fallback chains (Groq → Gemini), and streaming architecture.
+- **RAG pipeline:** Portfolio knowledge is indexed using BM25 retrieval, with chunk-level precision for accurate answers about specific projects.
+- **Production streaming:** Server-Sent Events with proper chunking, error recovery, and tool-call filtering — the kind of detail that separates demo code from production code.
+- **Deployed and live:** Running on Render with self-ping keep-alive, CORS middleware, and rate limiting. Not a localhost demo.
+
+### Statsky — Real-Time at Scale
+Building a sports betting app requires sub-second data delivery. Harshal implemented:
+- WebSocket connections for live match data streams
+- Redis pub/sub for event distribution
+- Go backend for high-throughput, low-latency processing
+- React Native frontend optimized for rapid UI updates during live matches
+This project demonstrates his ability to build systems where latency directly impacts user experience and business outcomes.
+
+### Local Mind — Developer Tool Thinking
+Building a VS Code extension isn't just coding — it's product design for developers:
+- Understood the pain point: developers want AI coding help without sending code to the cloud
+- Chose Ollama for local model inference — zero cloud dependency
+- Built the Go backend for model management and inference orchestration
+- Designed the TypeScript extension with proper VS Code API integration
+- Result: A usable developer tool, not a toy. Shows product thinking + technical execution.
+
+---
+
+## Why Hire Harshal — The Business Case
+
+### For Startups
+- Founding engineer material: builds 0→1, owns the full stack, ships fast
+- 14 shipped products prove he can deliver under pressure
+- Comfortable with ambiguity — doesn't need detailed specs to start building
+- Can be the entire technical team in early stages
+
+### For Mid-Size Companies
+- Production experience with systems handling real scale (10k+ leads/month)
+- Multi-tenant architecture experience (Zizbey)
+- Real-time systems expertise (WebSockets, Redis, event-driven architectures)
+- Can mentor junior developers and lead technical discussions
+
+### For AI-Focused Teams
+- Hands-on LangChain, LangGraph, RAG experience — not just tutorials
+- Built production AI products (Aaryx, Jyotish Guru, AI Mascot, Local Mind)
+- Understands the full AI product stack: model selection, retrieval, orchestration, deployment
+- Can bridge AI capabilities with practical product design
+
+### For Enterprise
+- Multi-tenant platform experience (Zizbey Consultancy)
+- Enterprise-grade auth and security patterns (JWT, role-based access)
+- Database design for complex business domains
+- DevOps and deployment pipeline experience
+
+### What Sets Harshal Apart
+1. **Breadth + Depth:** Not a specialist who can't work outside their comfort zone. Full-stack across web, mobile, AI, and DevOps.
+2. **Shipped, not learned:** Every skill on his resume has a live deployed product to back it up.
+3. **Builder, not just coder:** Thinks about users, business metrics, and product outcomes — not just clean code.
+4. **Self-directed:** Doesn't wait for assignments. Identifies problems and builds solutions.
+5. **Speed:** 14 products in 2 years speaks for itself.
+
+---
+
+## Personality & Culture Fit
+
+### Who Harshal Is Beyond Code
+- **Competitive gamer:** Won 3 inter-college gaming tournaments. This isn't trivia — it shows competitive drive, quick decision-making under pressure, and the ability to perform when stakes are real.
+- **Community builder:** Led The Hackers Meetup Nagpur chapter, organized events, grew communities. Not a lone wolf — someone who elevates the people around him.
+- **Published researcher:** AR/VR learning research paper in IJRAR. Intellectual curiosity that extends beyond daily work.
+- **Technical writer:** Multiple articles on React, Node.js, state management. Can communicate complex ideas clearly — essential for documentation, onboarding, and knowledge sharing.
+- **Ethical hacking background:** NPTEL certified. Security-aware mindset in all systems he builds.
+
+### Team Dynamics
+- Collaborative but independent — can pair program or work solo effectively
+- Direct communicator — no passive-aggressive nonsense, says what needs to be said
+- Comfortable in fast-paced, high-ambiguity environments
+- Takes feedback constructively — iterates and improves
+- Naturally curious — always learning new tools, frameworks, and patterns
