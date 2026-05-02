@@ -229,42 +229,48 @@ async def generate_chat_responses(message: str, checkpoint_id: Optional[str] = N
             config=config
         )
 
-    async for event in events:
-        event_type = event["event"]
-        
-        if event_type == "on_chat_model_stream":
-            chunk_content = serialise_ai_message_chunk(event["data"]["chunk"])
+    try:
+        async for event in events:
+            event_type = event["event"]
             
-            data = {"type": "content", "content": chunk_content}
-            yield f"data: {json.dumps(data)}\n\n"
-            
-        elif event_type == "on_chat_model_end":
-            # Check if there are tool calls for search
-            tool_calls = event["data"]["output"].tool_calls if hasattr(event["data"]["output"], "tool_calls") else []
-            search_calls = [call for call in tool_calls if call["name"] in ["tavily_search_results_json", "tavily_search", "portfolio_search"]]
-            
-            if search_calls:
-                # Signal that a search is starting
-                search_query = search_calls[0]["args"].get("query", "")
-                data = {"type": "search_start", "query": search_query}
+            if event_type == "on_chat_model_stream":
+                chunk_content = serialise_ai_message_chunk(event["data"]["chunk"])
+                
+                data = {"type": "content", "content": chunk_content}
                 yield f"data: {json.dumps(data)}\n\n"
                 
-        elif event_type == "on_tool_end" and event["name"] in ["tavily_search_results_json", "tavily_search", "portfolio_search"]:
-            # Search completed - send results or error
-            output = event["data"]["output"]
-            
-            urls = []
-            if event["name"] in ["tavily_search_results_json", "tavily_search"]:
-                # Check if output is a list 
-                if isinstance(output, list):
-                    # Extract URLs from list of search results
-                    for item in output:
-                        if isinstance(item, dict) and "url" in item:
-                            urls.append(item["url"])
-            
-            # Convert URLs to JSON and yield them
-            urls_json = json.dumps(urls)
-            yield f"data: {{\"type\": \"search_results\", \"urls\": {urls_json}}}\n\n"
+            elif event_type == "on_chat_model_end":
+                # Check if there are tool calls for search
+                tool_calls = event["data"]["output"].tool_calls if hasattr(event["data"]["output"], "tool_calls") else []
+                search_calls = [call for call in tool_calls if call["name"] in ["tavily_search_results_json", "tavily_search", "portfolio_search"]]
+                
+                if search_calls:
+                    # Signal that a search is starting
+                    search_query = search_calls[0]["args"].get("query", "")
+                    data = {"type": "search_start", "query": search_query}
+                    yield f"data: {json.dumps(data)}\n\n"
+                    
+            elif event_type == "on_tool_end" and event["name"] in ["tavily_search_results_json", "tavily_search", "portfolio_search"]:
+                # Search completed - send results or error
+                output = event["data"]["output"]
+                
+                urls = []
+                if event["name"] in ["tavily_search_results_json", "tavily_search"]:
+                    # Check if output is a list 
+                    if isinstance(output, list):
+                        # Extract URLs from list of search results
+                        for item in output:
+                            if isinstance(item, dict) and "url" in item:
+                                urls.append(item["url"])
+                
+                # Convert URLs to JSON and yield them
+                urls_json = json.dumps(urls)
+                yield f"data: {{\"type\": \"search_results\", \"urls\": {urls_json}}}\n\n"
+    except Exception as e:
+        import traceback
+        error_msg = f"Error in stream: {str(e)}\n{traceback.format_exc()}"
+        print(error_msg)
+        yield f"data: {json.dumps({'type': 'content', 'content': f'Backend error: {str(e)}'})}\n\n"
     
     # Send an end event
     yield f"data: {{\"type\": \"end\"}}\n\n"
