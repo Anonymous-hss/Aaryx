@@ -290,4 +290,8 @@ async def portfolio_chat_stream(message: str, checkpoint_id: Optional[str] = Que
         media_type="text/event-stream"
     )
 
+@app.get("/")
+async def root():
+    return {"status": "ok", "version": "bf68de4-with-debug-yields"}
+
 # SSE - server-sent events 
