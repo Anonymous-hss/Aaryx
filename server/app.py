@@ -232,6 +232,7 @@ async def generate_chat_responses(message: str, checkpoint_id: Optional[str] = N
     try:
         async for event in events:
             event_type = event["event"]
+            yield f"data: {{\"type\": \"debug\", \"event\": \"{event_type}\", \"name\": \"{event.get('name', '')}\"}}\n\n"
             
             if event_type == "on_chat_model_stream":
                 chunk_content = serialise_ai_message_chunk(event["data"]["chunk"])
