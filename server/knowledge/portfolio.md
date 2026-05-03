@@ -5,7 +5,7 @@ I am Harshal Sawatkar, a results-driven Full-Stack Developer with over 2+ years 
 
 Stats:
 - 2+ Years Experience
-- 13+ Shipped Products
+- 15+ Shipped Products
 - 10k+ Leads Per Month handled by systems I built
 - 5 Proof Areas (Qualities)
 - 4 Public Proof Paths
@@ -165,7 +165,11 @@ Intelligent AI assistant powered by Llama-3.1 via Groq and LangGraph. A feature-
 Role: Engineered the LangGraph orchestration flow and the responsive Next.js frontend, integrating web search and chat memory seamlessly.
 Outcome: Delivered a performant personal chatbot application that can execute real-time web research to ground its conversations.
 Stack: Next.js, FastAPI, LangGraph, Groq (Llama-3.1), Tavily, Tailwind CSS
-GitHub: https://github.com/Anonymous-hss/Aaryx
+15. Employee Attendance Portal (Web)
+Enterprise web application for managing employee attendance, track-ins, and leave requests. Designed with robust Role-Based Access Control (RBAC), multi-tiered workflows, and advanced security policies.
+Role: Architected the enterprise authentication system with sliding JWT and full multi-tiered role-based access control.
+Outcome: Created a robust multi-role portal supporting Employees, Managers, and HR, fully operational with audit logging.
+Stack: React.js, Node.js, Express.js, Sequelize ORM, PostgreSQL, JWT, bcryptjs
 
 ## Proof Areas (Qualities)
 1. Full-Stack Delivery: Shipped public websites and internal systems across React, Next.js, Node.js, Go, and PostgreSQL with ownership spanning UI, APIs, and operational flows. (Live proof: Reborn Clinics - https://rebornclinics.in/)
@@ -181,13 +185,13 @@ GitHub: https://github.com/Anonymous-hss/Aaryx
 ### Why Harshal is a Natural Founding Engineer
 Harshal isn't just a developer who writes code — he's a builder who thinks in systems, products, and outcomes. Every role he's had mirrors founding engineer responsibilities:
 
-**0 → 1 Builder:** Every single one of Harshal's 14 projects was built from scratch. No templates, no inherited codebases. The Reborn CRM started as an empty repo and became a production system processing 10,000+ leads/month across multiple clinic branches. Statsky went from concept to a live real-time betting app with WebSocket infrastructure. Aaryx (this assistant) went from idea to deployed AI product with RAG, streaming, and a polished UI — all solo.
+**0 → 1 Builder:** Every single one of Harshal's 15 projects was built from scratch. No templates, no inherited codebases. The Reborn CRM started as an empty repo and became a production system processing 10,000+ leads/month across multiple clinic branches. Statsky went from concept to a live real-time betting app with WebSocket infrastructure. Aaryx (this assistant) went from idea to deployed AI product with RAG, streaming, and a polished UI — all solo.
 
 **Full Ownership Mentality:** At Reborn Clinics, Harshal didn't just write backend code — he owned the entire technical stack. He designed the database schema, built the APIs, created the frontend dashboards, integrated Meta and Google Ads APIs for lead syncing, set up real-time notifications, and deployed everything. No senior engineer handed him tasks — he identified what the business needed and built it. That's founding engineer behavior.
 
 **Thrives in Chaos & Ambiguity:** Early-stage startups don't have PRDs or detailed specs. Harshal's entire career has been about receiving vague requirements ("we need a CRM", "build us an AI assistant", "we need workforce tracking") and turning them into shipped products. He doesn't need hand-holding — he needs a problem.
 
-**Speed of Execution:** Harshal ships fast. 14 products in 2 years. That's roughly one shipped product every 6 weeks. Each one production-grade, not a weekend hackathon project. This velocity is exactly what early-stage startups need — someone who can prototype, validate, iterate, and ship in weeks, not quarters.
+**Speed of Execution:** Harshal ships fast. 15 products in 2 years. That's roughly one shipped product every 6 weeks. Each one production-grade, not a weekend hackathon project. This velocity is exactly what early-stage startups need — someone who can prototype, validate, iterate, and ship in weeks, not quarters.
 
 **Cross-Functional Range:** A founding engineer can't be "just a frontend dev" or "just a backend dev." Harshal works across:
 - Mobile (React Native — Statsky, Zizbey Jobs)
@@ -308,7 +312,7 @@ Building a VS Code extension isn't just coding — it's product design for devel
 
 ### For Startups
 - Founding engineer material: builds 0→1, owns the full stack, ships fast
-- 14 shipped products prove he can deliver under pressure
+- 15 shipped products prove he can deliver under pressure
 - Comfortable with ambiguity — doesn't need detailed specs to start building
 - Can be the entire technical team in early stages
 
