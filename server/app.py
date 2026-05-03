@@ -28,8 +28,6 @@ search_tool = TavilySearch(
 
 tools = [search_tool, portfolio_search]
 
-llm_with_tools = get_llm_with_fallback(tools=tools)
-
 SYSTEM_PROMPT = """You are Aaryx, Harshal Sawatkar's personal AI assistant — think Donna Paulsen from Suits.
 You are sharp, confident, and always two steps ahead. You know everything about Harshal —
 his projects, his skills, his experience — before anyone even finishes asking.
@@ -111,6 +109,14 @@ NEVER:
 - Say "based on available information" or "it appears" — ever
 - Give shallow one-line answers to complex evaluative questions — go deep, connect dots, tell the story"""
 
+from langchain_google_genai import ChatGoogleGenerativeAI
+
+llm_primary = ChatGroq(model="llama-3.1-8b-instant")
+llm_fallback = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+
+llm_primary_with_tools = llm_primary.bind_tools(tools=tools)
+llm_fallback_with_tools = llm_fallback.bind_tools(tools=tools)
+
 async def model(state: State):
     messages = state["messages"]
     # Inject system prompt if not present
@@ -122,14 +128,24 @@ async def model(state: State):
         messages = [messages[0]] + messages[-10:]
 
     response = None
-    async for chunk in llm_with_tools.astream(messages):
-        if response is None:
-            response = chunk
-        else:
-            response += chunk
-            
+    try:
+        # Stream the primary model directly to avoid with_fallbacks() buffering
+        async for chunk in llm_primary_with_tools.astream(messages):
+            if response is None:
+                response = chunk
+            else:
+                response += chunk
+    except Exception as e:
+        print(f"Primary model failed: {e}. Falling back to Gemini.")
+        response = None
+        async for chunk in llm_fallback_with_tools.astream(messages):
+            if response is None:
+                response = chunk
+            else:
+                response += chunk
+                
     if response is None:
-        response = await llm_with_tools.ainvoke(messages)
+        response = await llm_fallback_with_tools.ainvoke(messages)
         
     return {
         "messages": [response], 
@@ -270,7 +286,7 @@ async def generate_chat_responses(message: str, checkpoint_id: Optional[str] = N
     try:
         async for event in events:
             event_type = event["event"]
-            yield f"data: {{\"type\": \"debug\", \"event\": \"{event_type}\", \"name\": \"{event.get('name', '')}\"}}\n\n"
+            # Debug events are muted in production to reduce network and stream latency
             
             if event_type == "on_chat_model_stream":
                 chunk = event["data"]["chunk"]
